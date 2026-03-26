@@ -15,11 +15,21 @@ const App = () => {
 
   return (
     <div className="app">
+      {/* News Ticker */}
+      <div className="top-ticker">
+        <div className="ticker-wrap">
+          <div className="ticker-content">
+            <span>🚀 Admissions are open for 2026 - 2027 at NEW INFANT JESUSEM HIGH SCHOOL! Join us for a journey of excellence. 🎓</span>
+            <span>🚀 Admissions are open for 2026 - 2027 at NEW INFANT JESUSEM HIGH SCHOOL! Join us for a journey of excellence. 🎓</span>
+          </div>
+        </div>
+      </div>
+
       {/* Navigation */}
       <nav className={`nav ${navScrolled ? 'scrolled' : ''}`}>
         <div className="container nav-content">
           <div className="logo-group">
-            <div className="logo-icon">NIJ</div>
+            <img src="/assets/logo.png" alt="NIJ Logo" className="logo-img" />
             <span className="school-name">NEW INFANT JESUSEM HIGH SCHOOL</span>
           </div>
           <ul className="nav-links">
@@ -30,7 +40,7 @@ const App = () => {
             <li onClick={() => scrollIntoView('gallery')}>Gallery</li>
             <li onClick={() => scrollIntoView('contact')}>Contact</li>
           </ul>
-          <button className="btn-primary" onClick={() => scrollIntoView('contact')}>Enroll Now</button>
+          <button className="btn-primary" onClick={() => window.open('https://infantjesus.ourschoolerp.com/', '_blank')}>Login</button>
         </div>
       </nav>
 
@@ -40,7 +50,7 @@ const App = () => {
           <h1 className="hero-title">Nurturing Excellence, Inspiring Futures</h1>
           <p className="hero-subtitle">Providing a holistic education that empowers students to achieve their highest potential at New Infant Jesusem High School.</p>
           <div className="hero-btns">
-            <button className="btn-primary" onClick={() => scrollIntoView('about')}>Discover More</button>
+            <button className="btn-primary" onClick={() => scrollIntoView('about')}>Admissions Are Open</button>
             <button className="btn-outline" onClick={() => scrollIntoView('contact')}>Contact Us</button>
           </div>
         </div>
@@ -192,7 +202,7 @@ const App = () => {
         <div className="container footer-content">
           <div className="footer-brand">
             <div className="logo-group mb-4">
-              <div className="logo-icon white">NIJ</div>
+              <img src="/assets/logo.png" alt="NIJ Logo" className="logo-img" />
               <span className="school-name text-white">NEW INFANT JESUSEM HIGH SCHOOL</span>
             </div>
             <p>Empowering the next generation with knowledge, values, and skills for life.</p>
