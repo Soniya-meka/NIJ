@@ -272,7 +272,7 @@ const App = () => {
           </div>
         </div>
         <div className="footer-bottom text-center">
-          <p>&copy; 2026 NEW INFANT JESUSEM HIGH SCHOOL. All Rights Reserved.</p>
+          <p>Copyright 2026 NEW INFANT JESUSEM HIGH SCHOOL - All Rights Reserved.</p>
         </div>
       </footer>
     </div>
