@@ -49,8 +49,8 @@ const App = () => {
       <div className="top-ticker">
         <div className="ticker-wrap">
           <div className="ticker-content">
-            <span>🚀 Admissions are open for 2026 - 2027 at NEW INFANT JESUSEM HIGH SCHOOL! Join us for a journey of excellence. 🎓</span>
-            <span>🚀 Admissions are open for 2026 - 2027 at NEW INFANT JESUSEM HIGH SCHOOL! Join us for a journey of excellence. 🎓</span>
+            <span>🚀 Admissions are open for 2026 - 2027 at NEW INFANT JESUS EM HIGH SCHOOL! Join us for a journey of excellence. 🎓</span>
+            <span>🚀 Admissions are open for 2026 - 2027 at NEW INFANT JESUS EM HIGH SCHOOL! Join us for a journey of excellence. 🎓</span>
           </div>
         </div>
       </div>
@@ -60,7 +60,7 @@ const App = () => {
         <div className="container nav-content">
           <div className="logo-group">
             <img src="/assets/logo.png" alt="NIJ Logo" className="logo-img" />
-            <span className="school-name">NEW INFANT JESUSEM HIGH SCHOOL</span>
+            <span className="school-name">NEW INFANT JESUS EM HIGH SCHOOL</span>
           </div>
           <ul className="nav-links">
             <li onClick={() => scrollIntoView('home')}>Home</li>
@@ -115,7 +115,7 @@ const App = () => {
           <div className="about-text">
             <span className="section-tag">About Our School</span>
             <h2 className="section-title">A Legacy of Quality Education</h2>
-            <p>New Infant Jesusem High School is a premier educational institution dedicated to providing a transformative learning experience. Our curriculum focuses on academic rigor, character building, and innovative thinking.</p>
+            <p>New Infant Jesus EM High School is a premier educational institution dedicated to providing a transformative learning experience. Our curriculum focuses on academic rigor, character building, and innovative thinking.</p>
             <div className="stats-mini">
               <div className="stat-item">
                 <h3>100%</h3>
@@ -250,7 +250,7 @@ const App = () => {
           <div className="footer-brand">
             <div className="logo-group mb-4">
               <img src="/assets/logo.png" alt="NIJ Logo" className="logo-img" />
-              <span className="school-name text-white">NEW INFANT JESUSEM HIGH SCHOOL</span>
+              <span className="school-name text-white">NEW INFANT JESUS EM HIGH SCHOOL</span>
             </div>
             <p>Empowering the next generation with knowledge, values, and skills for life.</p>
           </div>
@@ -272,7 +272,7 @@ const App = () => {
           </div>
         </div>
         <div className="footer-bottom text-center">
-          <p>Copyright 2026 NEW INFANT JESUSEM HIGH SCHOOL - All Rights Reserved.</p>
+          <p>Copyright 2026 NEW INFANT JESUS EM HIGH SCHOOL - All Rights Reserved.</p>
         </div>
       </footer>
     </div>
