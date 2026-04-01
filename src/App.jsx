@@ -1,12 +1,42 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef, useCallback } from 'react';
+
+const heroSlides = [
+  '/assets/event1.jpg',
+  '/assets/event2.jpg',
+  '/assets/event3.jpg',
+  '/assets/event4.jpg',
+  '/assets/gallery_event6.jpg',
+];
 
 const App = () => {
   const [navScrolled, setNavScrolled] = useState(false);
+  const [currentSlide, setCurrentSlide] = useState(0);
+  const slideInterval = useRef(null);
 
-  window.addEventListener('scroll', () => {
-    if (window.scrollY > 50) setNavScrolled(true);
-    else setNavScrolled(false);
-  });
+  const startSlideTimer = useCallback(() => {
+    if (slideInterval.current) clearInterval(slideInterval.current);
+    slideInterval.current = setInterval(() => {
+      setCurrentSlide((prev) => (prev + 1) % heroSlides.length);
+    }, 4000);
+  }, []);
+
+  useEffect(() => {
+    startSlideTimer();
+    return () => clearInterval(slideInterval.current);
+  }, [startSlideTimer]);
+
+  const goToSlide = (index) => {
+    setCurrentSlide(index);
+    startSlideTimer();
+  };
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setNavScrolled(window.scrollY > 50);
+    };
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   const scrollIntoView = (id) => {
     const el = document.getElementById(id);
@@ -44,15 +74,31 @@ const App = () => {
         </div>
       </nav>
 
-      {/* Hero Section */}
-      <section id="home" className="hero" style={{ backgroundImage: `linear-gradient(rgba(10, 25, 49, 0.7), rgba(10, 25, 49, 0.7)), url('/assets/hero_bg.png')` }}>
-        <div className="container hero-content animate-fade">
-          <h1 className="hero-title">Nurturing Excellence, Inspiring Futures</h1>
-          <p className="hero-subtitle">Providing a holistic education that empowers students to achieve their highest potential at New Infant Jesusem High School.</p>
-          <div className="hero-btns">
-            <button className="btn-primary" onClick={() => scrollIntoView('about')}>Admissions Are Open</button>
-            <button className="btn-outline" onClick={() => scrollIntoView('contact')}>Contact Us</button>
-          </div>
+      {/* Hero Section with Slideshow */}
+      <section id="home" className="hero">
+        {/* Slide backgrounds */}
+        {heroSlides.map((slide, index) => (
+          <div
+            key={index}
+            className={`hero-slide ${index === currentSlide ? 'active' : ''}`}
+            style={{ backgroundImage: `url('${slide}')` }}
+          />
+        ))}
+        {/* Dark blue overlay — same on every slide */}
+        <div className="hero-overlay" />
+
+
+
+        {/* Navigation dots */}
+        <div className="hero-dots">
+          {heroSlides.map((_, index) => (
+            <button
+              key={index}
+              className={`hero-dot ${index === currentSlide ? 'active' : ''}`}
+              onClick={() => goToSlide(index)}
+              aria-label={`Go to slide ${index + 1}`}
+            />
+          ))}
         </div>
       </section>
 
@@ -153,10 +199,15 @@ const App = () => {
           <span className="section-tag">Life at NIJ</span>
           <h2 className="section-title">Campus Highlights</h2>
           <div className="gallery-grid">
-            <div className="gallery-item"><img src="/assets/gallery_grad.png" alt="Graduation" /></div>
-            <div className="gallery-item"><img src="/assets/about_library.png" alt="Library" /></div>
-            <div className="gallery-item"><img src="/assets/facility_classroom.png" alt="Classroom" /></div>
-            <div className="gallery-item"><img src="/assets/hero_bg.png" alt="Campus Building" /></div>
+            <div className="gallery-item"><img src="/assets/gallery_event1.jpg" alt="Felicitation Ceremony" /></div>
+            <div className="gallery-item"><img src="/assets/gallery_event2.jpg" alt="Panel Discussion" /></div>
+            <div className="gallery-item"><img src="/assets/gallery_event3.jpg" alt="Staff Felicitation" /></div>
+            <div className="gallery-item"><img src="/assets/gallery_event4.jpg" alt="Award Presentation" /></div>
+            <div className="gallery-item"><img src="/assets/gallery_event5.jpg" alt="Student Achievement" /></div>
+            <div className="gallery-item"><img src="/assets/gallery_event6.jpg" alt="Staff Group Photo" /></div>
+            <div className="gallery-item"><img src="/assets/gallery_event7.jpg" alt="Bouquet Presentation" /></div>
+            <div className="gallery-item"><img src="/assets/gallery_event8.jpg" alt="Handshake Ceremony" /></div>
+            <div className="gallery-item"><img src="/assets/gallery_event9.jpg" alt="Teachers Felicitation" /></div>
           </div>
         </div>
       </section>
@@ -169,21 +220,17 @@ const App = () => {
             <h2 className="section-title">Contact Information</h2>
             <div className="info-item">
               <span className="icon">📍</span>
-              <p>Main Campus, Kakinada, Andhra Pradesh, India</p>
+              <p>GOVT HOSPITAL BACK SIDE, KALIGIRI POST AND MANDAL, SPSR NELLORE DT, AP - 524224</p>
             </div>
             <div className="info-item">
               <span className="icon">📞</span>
-              <p>+91 12345 67890</p>
+              <p>+91 98489 10100</p>
             </div>
             <div className="info-item">
               <span className="icon">✉️</span>
-              <p>info@nijschool.edu.in</p>
+              <p>newinfantjesus@gmail.com</p>
             </div>
-            <div className="social-links mt-8">
-              <span className="social-icon">FB</span>
-              <span className="social-icon">IG</span>
-              <span className="social-icon">IN</span>
-            </div>
+
           </div>
           <div className="contact-form glass animate-fade">
             <h3>Send us a Message</h3>
